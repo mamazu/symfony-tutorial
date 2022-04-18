@@ -1,0 +1,21 @@
+{% use 'form_div_layout.html.twig' %}
+
+{% block submit_widget %}
+    {% set attr = attr|merge({class:"btn waves-effect waves-light"}) %}
+    {{ parent() }}
+{% endblock %}
+
+{% block textarea_widget %}
+    {% set attr = attr|merge({class: "materialize-textarea" }) %}
+    {{ parent() }}
+{% endblock %}
+
+{% block checkbox_row %}
+    <label>
+      <input
+        type="checkbox"
+        {% if checked %} checked="" {%endif%}
+      >
+      <span>{{block('form_label')}}</span>
+    </label>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Woof erstellen</h2>
+    {{ form_start(form_definition) }} {# <form>#}
+        {{form_row(form_definition.message)}}
+        {{form_row(form_definition.username)}}
+        {{form_row(form_definition.contains_dogs)}}
+        {{ form_row(form_definition.submit) }}
+    {{ form_end(form_definition) }} {# </form>#}
+
+    <section>
+        <h2>Aktuelle Woofs</h2>
+        {% for woof in woofs|default([]) %}
+            <article>
+                {{woof.username}} sage:
+                <p>
+                    {{woof.message}}
+                </p>
+                <span>gepostet am {{woof.created_at}}</span>
+            </article>
+        {% endfor %}
+    </section>
+
+
+{% endblock %}
